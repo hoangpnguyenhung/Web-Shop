@@ -1,0 +1,43 @@
+@use "../../globalsass/" as *;
+.slider-wrapper {
+  background-color: $color-gray;
+}
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  @include tablet {
+    height: 50vh;
+  }
+
+  @include mobile {
+    height: 100vh;
+  }
+
+  &__control {
+    @include flex(center, space-between);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    visibility: hidden;
+    transition: visibility 0.3s ease;
+    color: $text-white-color;
+
+    &__left,
+    &__right {
+      transition: 0.5s ease-in;
+    }
+    &__left:hover,
+    &__right:hover {
+      color: $text-main-color;
+    }
+  }
+
+  &:hover &__control {
+    visibility: visible;
+  }
+}

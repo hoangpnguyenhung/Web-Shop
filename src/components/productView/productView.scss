@@ -1,0 +1,188 @@
+@use "../../globalsass/" as *;
+.product {
+  @include flex(flex-start, flex-start);
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  &__images {
+    width: 60%;
+    @include flex(flex-start, flex-start);
+    flex-wrap: wrap;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &__left {
+      width: 20%;
+
+      &__img1,
+      &__img2 {
+        cursor: pointer;
+      }
+    }
+
+    &__right {
+      flex-grow: 1;
+      padding-top: 100%;
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+      }
+    }
+  }
+
+  &__content {
+    & > * {
+      margin: 2rem 0;
+    }
+    &__title {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    &__price {
+      font-size: 2rem;
+      color: $main-color;
+    }
+
+    &__color,
+    &__size {
+      &__title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+      &__list {
+        @include flex(center, flex-start);
+        gap: 1rem;
+        &__item {
+          @include flex(center, center);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 1px solid #000;
+          font-size: 1.6rem;
+          font-weight: 500;
+          cursor: pointer;
+
+          &.active {
+            border-color: $main-color;
+          }
+          @include mobile {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+      .circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        @include mobile {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    &__quantity {
+      padding-bottom: 2rem;
+      &__title {
+        font-size: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      &__btn {
+        @include flex(center, flex-start);
+        font-size: 2rem;
+        column-gap: 2rem;
+        &__item {
+          @include flex(center, center);
+          border: 1px solid #000;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__btn {
+      & > * {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &-description {
+    margin-top: 2rem;
+    padding: 2rem;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    @include mobile {
+      display: none;
+    }
+
+    &.mobile {
+      display: none;
+
+      @include mobile {
+        display: block;
+      }
+    }
+
+    &.expand {
+      height: max-content;
+    }
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    &__content {
+      margin: 2rem 0;
+      font-size: 1.6rem;
+      text-align: justify;
+    }
+
+    &__toggle {
+      @include flex(center, center);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.bg-white {
+  background-color: $bg-color;
+}
+.bg-orange {
+  background-color: $main-color;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-blue {
+  background-color: rgb(76, 76, 248);
+}
+
+.bg-yellow {
+  background-color: rgb(243, 243, 44);
+}
+
+.bg-pink {
+  background-color: pink;
+}

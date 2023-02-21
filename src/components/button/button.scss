@@ -1,0 +1,66 @@
+@use "../../globalsass/" as *;
+
+.btn {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &-block {
+    width: 100%;
+  }
+
+  &-sm {
+    font-size: 1.75rem;
+  }
+  &-sm &__content {
+    padding: 0.7rem 1.5rem;
+  }
+
+  &__content,
+  &__icon {
+    transition: transform 0.5s ease;
+  }
+  &__content {
+    padding: 1rem 2rem;
+
+    @include mobile {
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__icon {
+    @include flex(center, center);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(-100%);
+  }
+
+  &__bg-orange {
+    background-color: $main-color;
+  }
+
+  &__bg-gray {
+    background-color: $color-gray;
+  }
+
+  &__bg-blue {
+    background-color: $color-blue;
+  }
+
+  &-animate:hover &__icon {
+    transform: translateX(0%);
+  }
+
+  &-animate:hover &__content {
+    transform: translateX(100%);
+  }
+}

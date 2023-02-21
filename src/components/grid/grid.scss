@@ -1,0 +1,25 @@
+@use "../../globalsass/" as *;
+.grid {
+  display: grid;
+}
+$numberofcols: (1, 2, 3, 4);
+
+@each $col in $numberofcols {
+  .grid-col-#{$col} {
+    grid-template-columns: repeat($col, 1fr);
+  }
+}
+@each $col in $numberofcols {
+  .grid-md-#{$col} {
+    @include tablet {
+      grid-template-columns: repeat($col, 1fr);
+    }
+  }
+}
+@each $col in $numberofcols {
+  .grid-sm-#{$col} {
+    @include mobile {
+      grid-template-columns: repeat($col, 1fr);
+    }
+  }
+}

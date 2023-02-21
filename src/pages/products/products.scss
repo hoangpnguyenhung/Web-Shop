@@ -1,0 +1,56 @@
+@use "../../globalsass/" as *;
+
+.products {
+  @include flex(null, null);
+  overflow: hidden;
+
+  gap: 10rem;
+
+  @include tablet {
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  &__filter {
+    width: 20%;
+    height: 100vh;
+    background-color: $bg-color;
+
+    &__close {
+      font-size: 3.5rem;
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    @include tablet {
+      width: max-content;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      padding: 2rem;
+      left: 0;
+      transform: translateX(-100%);
+      z-index: 99;
+      transition: transform 0.3s ease;
+    }
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+  &__show__filter {
+    display: none;
+
+    @include tablet {
+      display: block;
+      margin-bottom: 2rem;
+    }
+  }
+}

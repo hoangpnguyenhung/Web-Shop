@@ -1,0 +1,40 @@
+@use "../../globalsass/" as *;
+.checkbox {
+  @include flex(center, flex-start);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  width: max-content;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+  }
+
+  &__checkmar {
+    margin-right: 10px;
+    height: 15px;
+    width: 15px;
+    border: 1px solid $text-second-color;
+
+    @include flex(center, center);
+
+    i {
+      opacity: 0;
+      transition: opacity 0.3 ease;
+    }
+  }
+
+  input:checked ~ &__checkmar {
+    background-color: $main-color;
+    border: 1px solid $main-color;
+    color: $text-white-color;
+  }
+
+  input:checked ~ &__checkmar > i {
+    opacity: 1;
+  }
+}

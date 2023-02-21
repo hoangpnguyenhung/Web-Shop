@@ -1,0 +1,97 @@
+@use "../../../globalsass/" as *;
+.slider__item {
+  @include flex(center, space-between);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 0 5rem;
+  visibility: hidden;
+  opacity: 0;
+  inset: 0;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    padding: 0 2rem;
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  &__content {
+    width: 53%;
+    overflow: hidden;
+
+    @include mobile {
+      width: 100%;
+      padding: 5rem 0;
+    }
+
+    &__btn {
+      overflow: hidden;
+    }
+
+    &__title,
+    &__description,
+    &__btn {
+      margin-bottom: 3rem;
+      transform: translateX(-100%);
+      transition: 0.5s ease-in;
+
+      @include tablet {
+        margin-bottom: 1rem;
+      }
+    }
+    &__title {
+      font-size: 4.5rem;
+      font-weight: 600;
+      color: $text-main-color;
+      text-transform: uppercase;
+
+      @include tablet {
+        font-size: 3.5rem;
+      }
+
+      @include mobile {
+        font-size: 2.5rem;
+      }
+    }
+
+    &__description {
+      font-size: 1.75rem;
+      font-family: $font-second;
+      @include mobile {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  &__image {
+    height: 100%;
+    overflow: hidden;
+    transition: 0.5;
+
+    @include mobile {
+      height: 60%;
+    }
+    img {
+      height: 100%;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in;
+    }
+  }
+
+  &.active &__image {
+    img {
+      transform: translateX(0);
+    }
+  }
+
+  &.active &__content {
+    &__title,
+    &__description,
+    &__btn {
+      transform: translateX(0%);
+    }
+  }
+}

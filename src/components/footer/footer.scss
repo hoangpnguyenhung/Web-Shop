@@ -1,0 +1,60 @@
+@use "../../globalsass/" as *;
+
+.footer {
+  background-color: $bg-color;
+  font-size: 2.5rem;
+  color: $text-second-color;
+  box-shadow: $box-shadow;
+  padding: 1rem 0;
+
+  @include mobile {
+    font-size: 1.75rem;
+  }
+  &__about {
+    &__logo {
+      margin-bottom: 15px;
+
+      img {
+        height: 38px;
+      }
+    }
+
+    &__sologan {
+      font-family: $font-second;
+      font-size: 2rem;
+
+      @include mobile {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__item {
+    margin-top: 15px;
+    width: 100%;
+
+    &__title {
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    &__content {
+      font-family: $font-second;
+      font-size: 2rem;
+
+      @include mobile {
+        font-size: 1.5rem;
+      }
+
+      &__item ~ &__item {
+        margin-top: 10px;
+      }
+
+      &__item {
+        span {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

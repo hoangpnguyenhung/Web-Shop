@@ -1,0 +1,152 @@
+@use "../../globalsass/" as *;
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $header-height;
+  font-size: 2.5rem;
+  color: $text-main-color;
+  background-color: $bg-color;
+  z-index: 100;
+  transition: height 0.5s ease;
+
+  .container {
+    height: 100%;
+  }
+
+  @include tablet {
+    height: $header-tablet-height;
+  }
+
+  @include mobile {
+    font-size: 2rem;
+    height: $header-mobile-height;
+  }
+
+  &.shrink {
+    height: $header-shrink;
+    box-shadow: $box-shadow;
+
+    @include mobile {
+      height: $header-mobile-height;
+    }
+  }
+
+  &__logo {
+    @include flex(center, center);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    img {
+      width: 23rem;
+      transform: translateY(-12px);
+
+      @include mobile {
+        width: 15rem;
+        transform: translateY(-10px);
+      }
+    }
+  }
+
+  &__menu {
+    @include flex(center, space-between);
+    height: 100%;
+
+    &__toggle {
+      display: none;
+      font-size: 3rem;
+
+      @include tablet {
+        display: block;
+      }
+      @include mobile {
+        display: block;
+      }
+    }
+
+    &__left,
+    &__right {
+      @include flex(center, center);
+      gap: 3.5rem;
+
+      @include tablet {
+        gap: 2rem;
+      }
+
+      @include mobile {
+        gap: 1rem;
+      }
+    }
+
+    &__left {
+      &__item.active {
+        color: $main-color;
+        font-weight: 600;
+      }
+      &__close {
+        display: none;
+      }
+
+      @include tablet {
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 0;
+        justify-content: flex-start;
+        padding-top: 30px;
+        background: #fff;
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+
+        &.active {
+          transform: translateX(0%);
+        }
+
+        &__close {
+          display: block;
+          position: absolute;
+          left: 30px;
+          font-size: 3rem;
+        }
+      }
+    }
+    &__right {
+      &__item {
+        width: 25px;
+        height: 25px;
+
+        @include mobile {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      &__cart {
+        position: relative;
+      }
+      &__cart::before {
+        @include flex(center, center);
+        content: attr(totalOrders);
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: $text-white-color;
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        background-color: $main-color;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__user {
+        background-color: $main-color;
+        pointer-events: none;
+        border-radius: 50%;
+      }
+    }
+  }
+}
