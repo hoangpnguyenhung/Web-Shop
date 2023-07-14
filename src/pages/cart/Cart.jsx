@@ -16,7 +16,7 @@ const Cart = (props) => {
   const [cartProducts, setCartProducts] = useState(
     productData.getCartProducts(cartItem)
   );
-
+  console.log(cartProducts);
   useEffect(() => {
     setCartProducts(productData.getCartProducts(cartItem));
     setTotalProducts(
