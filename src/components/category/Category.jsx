@@ -39,6 +39,31 @@ const Category = (props) => {
         default:
           break;
       }
+    } else {
+      switch (type) {
+        case "category": {
+          const newFilterCategory = filter.category.filter(
+            (e) => e !== item.categorySlug
+          );
+          setFilter({ ...filter, category: newFilterCategory });
+          break;
+        }
+        case "color": {
+          const newFilterCategory = filter.color.filter(
+            (e) => e !== item.color
+          );
+          setFilter({ ...filter, color: newFilterCategory });
+          break;
+        }
+        case "size": {
+          const newFilterCategory = filter.size.filter((e) => e !== item.size);
+          setFilter({ ...filter, size: newFilterCategory });
+          break;
+        }
+
+        default:
+          break;
+      }
     }
   };
 
@@ -118,7 +143,7 @@ const Category = (props) => {
           ))}
         </div>
         <div className="category__filter__content__delete">
-          <Button size="sm" color="blue" animate={" "} onClick={clearFilter}>
+          <Button size="sm" color="orange" animate={" "} onClick={clearFilter}>
             Xoá bộ lọc
           </Button>
         </div>

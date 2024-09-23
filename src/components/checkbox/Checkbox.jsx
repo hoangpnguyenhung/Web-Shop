@@ -10,6 +10,8 @@ const Checkbox = (props) => {
       props.onChange(inputRef.current);
     }
   };
+  console.log(props.checked);
+
   return (
     <label className="checkbox">
       <input
